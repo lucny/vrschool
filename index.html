@@ -45,27 +45,15 @@ AFRAME.registerComponent("raycaster-color-change", {
 
 </script>
 
-<a-scene environment="preset: default;" antialias="true" animation-timeline__1="timeline: #myTimeline; loop: true">
+<a-scene environment="preset: default;" renderer="antialias: true;">
         
     <a-assets>
         <img id="gradient" src="images/gradient-fade.png" />
-		<img id="grid" src="images/border.png" />
-		<img id="sky" src="images/stars.jpg" />
-		
-		<!-- timeline used to play animations in sequence -->
-		<a-timeline id="myTimeline">
-			<a-timeline-animation select="#awesomeBox" name="shrink"></a-timeline-animation>
-			<a-timeline-animation select="#awesomeBox" name="setopacity0"></a-timeline-animation>
-			<a-timeline-animation select="#awesomeBox" name="setscale111"></a-timeline-animation>
-			<a-timeline-animation select="#awesomeBox" name="fadein"></a-timeline-animation>
-		</a-timeline>        
     </a-assets>
 
-	<a-sky 
-		rotation = "0 0 0"
-		color = "#FFFFFF"
-		material = "src: #sky">
-	</a-sky>
+    <a-sky 
+        color = "#000337">
+    </a-sky>
 
     <!-- use a simple mesh for raycasting/navigation -->
     <a-plane
@@ -111,24 +99,15 @@ AFRAME.registerComponent("raycaster-color-change", {
         p="2" q="3" radius="0.5" radius-tubular="0.1"
         position = "-2.5 1.5 -4"
         color="#CC3333"
-		material = "src: #grid; repeat: 48 8;"
-		shadow = "cast: true; receive: true"
-		animation__color = "property: material.color; dur: 2000; easing: linear; dir: alternate; from:#FF3333; to:#FFCCCC; loop: true"        
         raycaster-target>
     </a-torus-knot>
     
     <a-box
-        id = "awesomeBox"
         width = "2" height = "1" depth = "1"
         position = "-1 0.5 -3"
         rotation = "0 45 0"  
         color = "#FF8800"
-		material = "src: #grid; transparent: true; opacity: 1.0;"
-		shadow = "cast: true; receive: true"
-		animation__shrink = "property: scale; dur: 2000; easing: easeInOutSine; from:1 1 1; to:0.01 0.01 0.01; autoplay: false;"
-		animation__setopacity0 = "property: material.opacity; dur: 10; easing: linear; from: 1; to: 0; autoplay: false"
-		animation__setscale111 = "property: scale; dur: 10; easing: linear; from: 0.01 0.01 0.01; to: 1 1 1; autoplay: false"
-		animation__fadein      = "property: material.opacity; dur: 2000; easing: linear; from:0; to:1; autoplay: false"
+        class = ""
         raycaster-target>
     </a-box>
 
@@ -136,10 +115,6 @@ AFRAME.registerComponent("raycaster-color-change", {
         radius = "1.25"
         position = "0 1.25 -5"
         color = "#DDBB00"
-		material = "src: #grid; repeat: 32 16;"
-		shadow = "cast: true; receive: true"
-		animation__radius = "property: radius; dur: 1000; easing: easeInOutSine; dir: alternate; from:1.25; to:1.10; loop: true"
-		animation__color = "property: material.color; dur: 1000; easing: easeInOutSine; dir: alternate; from:#DDBB00; to:#333333; loop: true"        
         raycaster-target>
     </a-sphere>
     
