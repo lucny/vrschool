@@ -45,12 +45,12 @@ AFRAME.registerComponent("raycaster-color-change", {
 
 </script>
 
-<a-scene environment="preset: default;" renderer="antialias: true;" animation-timeline__1="timeline: #myTimeline; loop: true">
+<a-scene environment="preset: default;" antialias="true" animation-timeline__1="timeline: #myTimeline; loop: true">
         
     <a-assets>
         <img id="gradient" src="images/gradient-fade.png" />
-		<img id="grid" src="images/border.png" crossorigin="anonymous" />
-		<img id="sky" src="images/stars.jpg" crossorigin="anonymous" />
+		<img id="grid" src="images/border.png" />
+		<img id="sky" src="images/stars.jpg" />
 		
 		<!-- timeline used to play animations in sequence -->
 		<a-timeline id="myTimeline">
@@ -61,9 +61,11 @@ AFRAME.registerComponent("raycaster-color-change", {
 		</a-timeline>        
     </a-assets>
 
-    <a-sky 
-        color = "#000337">
-    </a-sky>
+	<a-sky 
+		rotation = "0 0 0"
+		color = "#FFFFFF"
+		material = "src: #sky">
+	</a-sky>
 
     <!-- use a simple mesh for raycasting/navigation -->
     <a-plane
